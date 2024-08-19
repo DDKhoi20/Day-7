@@ -34,11 +34,12 @@ public class JPAConfig {
 
     @Bean
     public DataSource dataSource() {
-        final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://127.0.0.1:3307/jpa?characterEncoding=UTF-8");
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/TransactionCustomer?characterEncoding=UTF-8&createDatabaseIfNotExist=true"); // spring-jpa-1: database name
         dataSource.setUsername("root");
-        dataSource.setPassword("admin");
+        dataSource.setPassword("Khoidang0102");
+
         return dataSource;
     }
 
