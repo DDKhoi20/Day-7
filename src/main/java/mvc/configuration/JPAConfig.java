@@ -29,14 +29,14 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "mvc")
+@EnableJpaRepositories(basePackages = "mvc.repository")
 public class JPAConfig {
 
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/TransactionCustomer?characterEncoding=UTF-8&createDatabaseIfNotExist=true"); // spring-jpa-1: database name
+        dataSource.setUrl("jdbc:mysql://localhost:3306/spring-jpa-demo?characterEncoding=UTF-8&createDatabaseIfNotExist=true"); // spring-jpa-1: database name
         dataSource.setUsername("root");
         dataSource.setPassword("Khoidang0102");
 
@@ -47,7 +47,7 @@ public class JPAConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
-        entityManagerFactoryBean.setPackagesToScan("mvc");
+        entityManagerFactoryBean.setPackagesToScan("mvc.entity");
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         entityManagerFactoryBean.setJpaProperties(additionalProperties());
 

@@ -1,10 +1,12 @@
 package mvc.controller;
 
-import mvc.form.Gender;
-import mvc.form.User;
+import mvc.entity.Gender;
+import mvc.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
@@ -21,7 +23,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/result")
-    public String processUser(User user) {
+    public String processUser(User user, HttpSession httpSession) {
+        httpSession.setAttribute("username", user.getName());
         return "formregistration/userResult";
     }
 }
